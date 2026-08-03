@@ -10,6 +10,13 @@ Giáo trình của lớp là **できる日本語 初級** ("sách đỏ", 15 b�
 
 | Bài | Từ vựng | Ngữ pháp | Kanji |
 |-----|---------|----------|-------|
+| 1 はじめまして | 47 | 9 | — |
+| 2 買い物・食事 | 77 | 9 | — |
+| 3 スケジュール | 78 | 10 | — |
+| 4 私の国・町 | 68 | 8 | — |
+| 5 休みの日 | 59 | 8 | — |
+| 6 一緒に！ | 55 | 14 | — |
+| 7 友達の家で | 69 | 9 | — |
 | 8 大切な人 | 81 | 9 | 12 |
 | 9 好きなこと | 61 | 7 | 10 |
 | 10 バスツアー | 69 | 10 | 9 |
@@ -17,9 +24,13 @@ Giáo trình của lớp là **できる日本語 初級** ("sách đỏ", 15 b�
 | 12 病気・けが | 52 | 6 | — |
 | 13 私のおすすめ | 40 | 7 | — |
 | 14 国の習慣 | 62 | 7 | — |
+| 15 テレビ・雑誌から | 48 | 6 | — |
 
-Các bài còn lại (1–7, 15 của sách đỏ và toàn bộ sách vàng) đã khai báo sẵn trong
-`data/manifest.js` nhưng chưa có nội dung — thẻ hiện mờ trên trang chủ.
+Toàn bộ 15 bài của sách đỏ đã có nội dung đầy đủ (từ vựng + ngữ pháp; kanji
+riêng chỉ có ở bài 8–11, các bài khác không có danh sách kanji trong giáo
+trình gốc). Sách vàng (**できる日本語 初中級**) đã khai báo sẵn trong
+`data/manifest.js` nhưng chưa có nội dung — thẻ hiện mờ trên trang chủ, chờ
+tài liệu nguồn.
 
 Tab Flashcard có 2 bộ thẻ: **Từ vựng** và **Kanji & từ ghép**.
 
@@ -51,13 +62,14 @@ trang chủ và ở từng bài luôn khớp với những gì đã ôn gộp.
   tiếng Việt đều ra ký tự rác. Bản đã giải mã nằm ở `reference/tu-vung-15-bai.txt`
   — **có đủ cả 15 bài**, kể cả 12–14.
 - **Ngữ pháp bài 8–11**: file `TOM-TAT-NGU-PHAP-BAI-*.pdf` / `ngữ pháp *.pdf` của lớp.
-- **Ngữ pháp bài 12–14**: cột 学習項目 trong syllabus chính thức
+- **Ngữ pháp bài 1–7, 12–15**: cột 学習項目 trong syllabus chính thức
   (`reference/syllabus-sach-do.txt`, tải từ dekirunihongo.jp) — vì lớp chưa phát
   bản tóm tắt cho các bài này. Ví dụ minh hoạ do soạn thêm.
 - **Kanji bài 8–11**: các file `KANJI-BAI-*.pptx` / `Slot * Kanji bai *.pptx`
   (âm On/Kun, âm Hán–Việt, từ ghép lấy nguyên từ slide).
-- **Kanji bài 12–14**: chưa có tài liệu. Khi nào có slide kanji thì bổ sung vào
-  mảng `kanji` của file bài tương ứng.
+- **Kanji bài 1–7, 12–15**: giáo trình sách đỏ không có danh sách kanji riêng
+  cho các bài này (kanji chỉ dạy tập trung ở bài 8–11 theo slide của lớp), nên
+  mảng `kanji` để trống — không phải thiếu sót.
 
 ## Thêm nội dung cho một bài mới
 

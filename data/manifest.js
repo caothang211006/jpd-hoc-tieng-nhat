@@ -8,13 +8,20 @@
     name: 'できる日本語 初級 — Sách đỏ',
     tone: 'red',
     lessons: [
-      { id: 'shokyu-1',  n: 1,  jp: 'はじめまして',   vi: 'Làm quen',                      file: null },
-      { id: 'shokyu-2',  n: 2,  jp: '買い物・食事',   vi: 'Mua sắm & ăn uống',              file: null },
-      { id: 'shokyu-3',  n: 3,  jp: 'スケジュール',   vi: 'Lịch trình',                    file: null },
-      { id: 'shokyu-4',  n: 4,  jp: '私の国・町',     vi: 'Đất nước & thành phố của tôi',   file: null },
-      { id: 'shokyu-5',  n: 5,  jp: '休みの日',       vi: 'Ngày nghỉ',                     file: null },
-      { id: 'shokyu-6',  n: 6,  jp: '一緒に！',       vi: 'Cùng nhau!',                    file: null },
-      { id: 'shokyu-7',  n: 7,  jp: '友達の家で',     vi: 'Ở nhà bạn',                     file: null },
+      { id: 'shokyu-1',  n: 1,  jp: 'はじめまして',   vi: 'Làm quen',
+        file: 'data/shokyu/l01.js', words: 47, grammar: 9, kanji: 0 },
+      { id: 'shokyu-2',  n: 2,  jp: '買い物・食事',   vi: 'Mua sắm & ăn uống',
+        file: 'data/shokyu/l02.js', words: 77, grammar: 9, kanji: 0 },
+      { id: 'shokyu-3',  n: 3,  jp: 'スケジュール',   vi: 'Lịch trình',
+        file: 'data/shokyu/l03.js', words: 78, grammar: 10, kanji: 0 },
+      { id: 'shokyu-4',  n: 4,  jp: '私の国・町',     vi: 'Đất nước & thành phố của tôi',
+        file: 'data/shokyu/l04.js', words: 68, grammar: 8, kanji: 0 },
+      { id: 'shokyu-5',  n: 5,  jp: '休みの日',       vi: 'Ngày nghỉ',
+        file: 'data/shokyu/l05.js', words: 59, grammar: 8, kanji: 0 },
+      { id: 'shokyu-6',  n: 6,  jp: '一緒に！',       vi: 'Cùng nhau!',
+        file: 'data/shokyu/l06.js', words: 55, grammar: 14, kanji: 0 },
+      { id: 'shokyu-7',  n: 7,  jp: '友達の家で',     vi: 'Ở nhà bạn',
+        file: 'data/shokyu/l07.js', words: 69, grammar: 9, kanji: 0 },
       { id: 'shokyu-8',  n: 8,  jp: '大切な人',       vi: 'Người quan trọng',
         file: 'data/shokyu/l08.js', words: 81, grammar: 9, kanji: 12 },
       { id: 'shokyu-9',  n: 9,  jp: '好きなこと',     vi: 'Điều mình thích',
@@ -29,7 +36,8 @@
         file: 'data/shokyu/l13.js', words: 40, grammar: 7, kanji: 0 },
       { id: 'shokyu-14', n: 14, jp: '国の習慣',       vi: 'Phong tục của đất nước',
         file: 'data/shokyu/l14.js', words: 62, grammar: 7, kanji: 0 },
-      { id: 'shokyu-15', n: 15, jp: 'テレビ・雑誌から', vi: 'Từ TV & tạp chí',              file: null }
+      { id: 'shokyu-15', n: 15, jp: 'テレビ・雑誌から', vi: 'Từ TV & tạp chí',
+        file: 'data/shokyu/l15.js', words: 48, grammar: 6, kanji: 0 }
     ]
   });
 
