@@ -44,6 +44,7 @@
     if (!el) return;
     var nav = el.getAttribute('data-nav');
     if (nav === 'home') { go('#/'); return; }
+    if (nav === 'study') { go('#/study'); return; }
     if (TAB_LABEL[nav] && current.lessonId) { go('#/l/' + current.lessonId + '/' + nav); }
   });
 
@@ -62,7 +63,14 @@
 
     var h = '<h1>Học tiếng Nhật theo giáo trình できる日本語</h1>' +
             '<p class="sub">Chọn một bài để xem từ vựng, ngữ pháp, kanji và làm bài kiểm tra. ' +
-            'Tiến độ được lưu tự động trên máy bạn.</p>';
+            'Tiến độ được lưu tự động trên máy bạn.</p>' +
+            '<button class="study-cta" data-nav="study">' +
+              '<span class="study-cta-icon">🔀</span>' +
+              '<span>' +
+                '<span class="study-cta-title">Ôn tập nhiều bài cùng lúc</span>' +
+                '<span class="study-cta-sub">Gộp từ vựng hoặc kanji của nhiều bài vào một bộ flashcard / bài kiểm tra</span>' +
+              '</span>' +
+            '</button>';
 
     JPD.books.forEach(function (book) {
       var ready = book.lessons.filter(function (l) { return l.file; }).length;
@@ -139,6 +147,16 @@
     });
   }
 
+  /* --------------------------------------------------------------- study */
+  function renderStudy() {
+    current.lessonId = null;
+    tabs.hidden = true;
+    lessonBar.hidden = true;
+    view.innerHTML = '';
+    if (window.Views && window.Views.study) window.Views.study(view);
+    else view.innerHTML = '<div class="empty">Đang tải…</div>';
+  }
+
   /* -------------------------------------------------------------- router */
   function route() {
     var h = location.hash.replace(/^#/, '');
@@ -147,6 +165,8 @@
 
     if (parts[0] === 'l' && parts[1]) {
       renderLesson(parts[1], TAB_LABEL[parts[2]] ? parts[2] : 'vocab', parts[3]);
+    } else if (parts[0] === 'study') {
+      renderStudy();
     } else {
       renderHome();
     }
@@ -156,12 +176,14 @@
 
   window.App = {
     onManifest: function () {
-      // manifest.js loads last; render once it has arrived
-      if (!location.hash || location.hash === '#/' || location.hash === '#') renderHome();
-      else route();
+      // manifest.js is the last <script> tag, so this is the actual first
+      // render. Calling route() here (not at load) matters: a plain script
+      // tag runs synchronously in document order, so if route() ran at the
+      // bottom of this file it would fire before manifest.js had registered
+      // any books, see an empty catalogue, and bounce a direct lesson link
+      // like #/l/shokyu-8/vocab straight back to '#/'.
+      route();
     },
     refreshHome: renderHome
   };
-
-  route();
 })();

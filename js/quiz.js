@@ -1,5 +1,5 @@
-/* Multiple-choice quiz over a lesson's vocabulary (and grammar if present).
-   Distractors are drawn from the same lesson so the choices stay plausible. */
+/* Multiple-choice quiz. Distractors are drawn from the same pool so the
+   wrong choices stay plausible instead of being obviously unrelated words. */
 (function () {
   'use strict';
   window.Views = window.Views || {};
@@ -13,9 +13,26 @@
   }
 
   window.Views.quiz = function (root, lesson) {
-    var pool = lesson.vocab || [];
+    runQuizSession(root, {
+      pool: lesson.vocab || [],
+      storeId: lesson.id,
+      title: 'Kiểm tra bài ' + esc(lesson.n || ''),
+      afterAction: { label: 'Xem lại từ vựng', attr: 'data-nav="vocab"' }
+    });
+  };
+
+  /* opts:
+       pool         array of {w,k,m}
+       storeId      Store bucket for best-score tracking
+       title        heading shown on the setup screen
+       afterAction  optional { label, attr } — extra button on the score screen,
+                    `attr` is raw HTML attributes (e.g. a data-nav hook) */
+  window.runQuizSession = runQuizSession;
+
+  function runQuizSession(root, opts) {
+    var pool = opts.pool || [];
     if (pool.length < 4) {
-      root.innerHTML = '<div class="empty">Bài này chưa đủ từ để tạo đề kiểm tra.</div>';
+      root.innerHTML = '<div class="empty">Chưa đủ từ để tạo đề kiểm tra (cần ít nhất 4 từ).</div>';
       return;
     }
 
@@ -23,10 +40,10 @@
 
     /* ------------------------------------------------------------ setup */
     function setup() {
-      var best = Store.bestScore(lesson.id);
+      var best = Store.bestScore(opts.storeId);
       root.innerHTML =
         '<div class="quiz-wrap">' +
-          '<h1>Kiểm tra bài ' + esc(lesson.n || '') + '</h1>' +
+          '<h1>' + opts.title + '</h1>' +
           '<p class="sub">Chọn nghĩa đúng. Sai ở đâu sẽ được liệt kê lại ở cuối để ôn.' +
             (best !== null ? ' Điểm cao nhất của bạn: <b>' + Math.round(best * 100) + '%</b>.' : '') +
           '</p>' +
@@ -145,7 +162,7 @@
       }
 
       function finish() {
-        Store.addScore(lesson.id, correct, questions.length);
+        Store.addScore(opts.storeId, correct, questions.length);
         var pct = Math.round(correct / questions.length * 100);
 
         root.innerHTML =
@@ -154,7 +171,8 @@
             '<p class="sub">Đúng ' + correct + '/' + questions.length + ' câu.</p>' +
             '<div class="flash-controls">' +
               '<button class="btn primary" id="qagain">Làm lại</button>' +
-              '<button class="btn" data-nav="vocab">Xem lại từ vựng</button>' +
+              (opts.afterAction ? '<button class="btn" ' + opts.afterAction.attr + '>' +
+                esc(opts.afterAction.label) + '</button>' : '') +
             '</div>' +
             (wrong.length ? '<div class="review"><h2>Câu sai (' + wrong.length + ')</h2>' +
               wrong.map(function (x) {
@@ -175,5 +193,5 @@
         root.querySelector('#qagain').addEventListener('click', setup);
       }
     }
-  };
+  }
 })();

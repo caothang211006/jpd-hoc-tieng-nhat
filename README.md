@@ -21,11 +21,28 @@ Giáo trình của lớp là **できる日本語 初級** ("sách đỏ", 15 b�
 Các bài còn lại (1–7, 15 của sách đỏ và toàn bộ sách vàng) đã khai báo sẵn trong
 `data/manifest.js` nhưng chưa có nội dung — thẻ hiện mờ trên trang chủ.
 
-Tab Flashcard có 2 bộ thẻ: **Từ vựng** và **Kanji & từ ghép**. Bộ kanji gồm một
-thẻ cho mỗi chữ (mặt trước là chữ + âm On/Kun, mặt sau là âm Hán–Việt và nghĩa)
-cộng một thẻ cho từng từ ghép đi kèm — bài 8 chẳng hạn ra 41 thẻ từ 12 chữ. Từ
-ghép trùng nhau giữa hai chữ (映画 nằm dưới cả 映 và 画) chỉ hiện một lần. Hai bộ
-thẻ đếm tiến độ riêng, nên đánh dấu thuộc kanji không ảnh hưởng số từ vựng.
+Tab Flashcard có 2 bộ thẻ: **Từ vựng** và **Kanji & từ ghép**.
+
+- Thẻ **từ vựng**: mặt trước là từ + cách đọc hiragana/katakana (cỡ lớn, rõ),
+  mặt sau là nghĩa.
+- Thẻ **kanji** (chữ Hán đơn lẻ): mặt trước **chỉ hiện chữ**, không có cách đọc
+  — để việc nhận mặt chữ được kiểm tra thật. Cách đọc On/Kun dồn sang mặt sau
+  cùng nghĩa Hán–Việt.
+- Thẻ **từ ghép** (đi kèm mỗi chữ kanji, ví dụ 大家 dưới chữ 家): coi như từ
+  vựng bình thường — mặt trước có kana, mặt sau là nghĩa, kèm ghi chú "từ ghép
+  của [chữ]".
+
+Bài 8 ra 41 thẻ từ 12 chữ (chữ đơn + từ ghép, đã loại trùng — 映画 nằm dưới cả
+映 và 画 nhưng chỉ hiện một lần). Hai bộ thẻ đếm tiến độ riêng, nên đánh dấu
+thuộc kanji không ảnh hưởng số từ vựng.
+
+### Ôn tập nhiều bài cùng lúc
+
+Nút **"Ôn tập nhiều bài cùng lúc"** trên trang chủ (`#/study`) cho chọn nhiều
+bài rồi gộp thành một bộ flashcard hoặc một đề kiểm tra duy nhất — dùng để ôn
+trước khi thi, không phải học từng bài riêng lẻ. Đánh dấu "đã thuộc" trong
+phiên gộp vẫn ghi lại đúng vào tiến độ của bài gốc chứa từ đó, nên số liệu ở
+trang chủ và ở từng bài luôn khớp với những gì đã ôn gộp.
 
 ## Nguồn dữ liệu
 
